@@ -1,0 +1,12 @@
+app/app/__pycache__/
+app/doors/__pycache__/
+app/app/__pycache__/__init__.cpython-310.pyc
+app/app/__pycache__/settings.cpython-310.pyc
+app/app/__pycache__/urls.cpython-310.pyc
+app/app/__pycache__/wsgi.cpython-310.pyc
+app/doors/__pycache__/__init__.cpython-310.pyc
+app/doors/__pycache__/admin.cpython-310.pyc
+app/doors/__pycache__/apps.cpython-310.pyc
+app/doors/__pycache__/models.cpython-310.pyc
+app/doors/migrations/__pycache__/__init__.cpython-310.pyc
+app/doors/migrations/__pycache__/0001_initial.cpython-310.pyc
