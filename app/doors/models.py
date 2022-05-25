@@ -4,7 +4,7 @@ from django.db import models
 
 class Company(models.Model):
     
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name='Компания')
 
     class Meta:
         verbose_name = 'Компания'
@@ -16,8 +16,8 @@ class Company(models.Model):
 
 class Collection(models.Model):
     
-    company = models.ForeignKey(Company, related_name='test1', on_delete=models.CASCADE)
-    name = models.CharField(max_length=80)
+    company = models.ForeignKey(Company, related_name='test1', verbose_name='Компания', on_delete=models.CASCADE)
+    name = models.CharField(max_length=80, verbose_name='Название коллекции')
     
     class Meta:
         verbose_name = 'Коллекция'
@@ -29,8 +29,8 @@ class Collection(models.Model):
 
 class Door(models.Model):
     
-    collection = models.ForeignKey(Collection, related_name='test2', on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    collection = models.ForeignKey(Collection, related_name='test2', verbose_name='Коллекция', on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, verbose_name='Название модели')
 
     class Meta:
         verbose_name = 'Дверь'
