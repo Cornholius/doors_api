@@ -1,8 +1,11 @@
 from django.shortcuts import redirect
 from django.views import View
 from .models import *
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import *
+
 
 class DeleteItemView(View):
 
@@ -32,7 +35,10 @@ class CollectionViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
 
 
-class DoorViewSet(viewsets.ModelViewSet):
+class DoorsViewSet(viewsets.ModelViewSet):
     queryset = Door.objects.all()
     serializer_class = DoorSerializer
     http_method_names = ['get']
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filter_fields = ['collection__collection_name']
+    # search_fields = ['Door__collection']
