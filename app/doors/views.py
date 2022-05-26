@@ -8,8 +8,12 @@ from .serializers import *
 
 
 class DeleteItemView(View):
-
+    """
+    Кнопка 'удалить' из админ панели
+    """
+    
     def get(self, request, type=None, id=None):
+        print(request)
 
         item_type = {
             'company': Company,
@@ -20,6 +24,7 @@ class DeleteItemView(View):
 
         item = item_type[type].objects.get(id=id)
         item.delete()
+        print(type)
 
         return redirect(f'/admin/doors/{type}/')
 

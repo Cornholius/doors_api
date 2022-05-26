@@ -42,12 +42,16 @@ class Door(models.Model):
     weight = models.CharField(max_length=400, verbose_name='Вес образца', blank=True, null=True)
     photo = models.ImageField(upload_to='doors_img/', verbose_name='Фото двери', blank=True, null=True)
 
+    def save(self):
+        if self.door_name == None:
+            self.door_name = 'Название отсутствует'
+            super(Door, self).save()
     class Meta:
         verbose_name = 'Дверь'
         verbose_name_plural = 'Двери'
 
     def __str__(self):
-        if self.door_name is None:
+        if self.door_name == None:
             return f'Дверь {self.id}'
         else:
             return self.door_name

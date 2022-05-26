@@ -20,11 +20,11 @@ class DoorsResource(resources.ModelResource):
 
     class Meta:
         model = Door
-        # exclude = ['id']
-        # import_id_fields = ['area_number']
-        # fields = ('collection',)
     
     def before_import_row(row, *args, **kwargs):
+        '''
+        Функция проверки наличия компаний и коллекций в БД. При их отсутствии создаёт цепочку компания - коллекция
+        '''
         incoming_row = OrderedDict(args[0])
         (company, collection) = incoming_row['Компания'], incoming_row['Коллекция']
         check_company = Company.objects.get_or_create(company_name=company)
