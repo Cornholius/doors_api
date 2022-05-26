@@ -1,3 +1,4 @@
+from dataclasses import field
 from rest_framework import serializers
 from .models import *
 
@@ -5,7 +6,8 @@ from .models import *
 class CompanySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Company
-        fields = ('id', 'url', 'name')
+        # fields = ('id', 'url', 'company_name')
+        fields = '__all__'
 
 
 class CollectionSerializer(serializers.HyperlinkedModelSerializer):
@@ -14,7 +16,8 @@ class CollectionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Collection
-        fields = ('id', 'url', 'company', 'name')
+        fields = '__all__'
+        # fields = ('id', 'url', 'company', 'collection_name')
 
 
 class DoorSerializer(serializers.HyperlinkedModelSerializer):
@@ -23,9 +26,4 @@ class DoorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Door
-        fields = (
-            'id',
-            'url',
-            'collection',
-            'name',
-            )
+        fields = '__all__'
