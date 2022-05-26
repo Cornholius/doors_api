@@ -5,6 +5,7 @@ from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources, fields
 from .resources import DoorsResource
 
+
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     
@@ -24,12 +25,13 @@ class CollectionAdmin(admin.ModelAdmin):
     def company(self, obj):
         return obj.name
 
+
     # list_display = '__all__'
     list_display = ('collection_name', 'company', 'delete_button')
-    delete_button.short_description = ''
 
 
 @admin.register(Door)
+
 
 class DoorAdmin(ImportExportActionModelAdmin):
     
@@ -48,10 +50,11 @@ class DoorAdmin(ImportExportActionModelAdmin):
     # def collection(self, obj):
     #     return obj.name
 
+
     def delete_button(self, obj):
         return format_html('<a class="AdminDeleteBtn" href="/delete/door/{}/">Удалить</a>', obj.id)
     
     # list_display = ()
     # list_display = "__all__"
-    delete_button.short_description = ''
+
 
