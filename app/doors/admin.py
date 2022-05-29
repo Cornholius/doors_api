@@ -39,5 +39,3 @@ class DoorAdmin(ImportExportActionModelAdmin):
     list_display = [field.name for field in Door._meta.fields if field.name != 'id']
     list_display.append('delete_button')
     search_fields = ['door_name', 'collection']
-
-

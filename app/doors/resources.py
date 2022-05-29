@@ -1,4 +1,3 @@
-from unicodedata import name
 from import_export import resources, fields
 from .models import Door, Collection, Company
 from import_export.widgets import ForeignKeyWidget
@@ -16,7 +15,6 @@ class DoorsResource(resources.ModelResource):
     color = fields.Field(column_name='Цвет покраски', attribute='color')
     weight = fields.Field(column_name='Вес образца', attribute='weight')
     photo = fields.Field(column_name='Фото двери', attribute='photo')
-
 
     class Meta:
         model = Door

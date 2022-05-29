@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.views import View
 from .models import *
-from rest_framework import viewsets, generics
+from rest_framework import viewsets
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import *
@@ -13,8 +13,7 @@ class DeleteItemView(View):
     """
     
     def get(self, request, type=None, id=None):
-        print(request)
-
+        
         item_type = {
             'company': Company,
             'collection': Collection,
@@ -24,7 +23,6 @@ class DeleteItemView(View):
 
         item = item_type[type].objects.get(id=id)
         item.delete()
-        print(type)
 
         return redirect(f'/admin/doors/{type}/')
 
@@ -46,4 +44,3 @@ class DoorsViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filter_fields = ['collection__collection_name']
-    # search_fields = ['Door__collection']

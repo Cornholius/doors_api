@@ -1,7 +1,3 @@
-from distutils.command.upload import upload
-from statistics import mode
-from types import NoneType
-from unicodedata import name
 from django.db import models
 
 
@@ -55,4 +51,3 @@ class Door(models.Model):
             return f'Дверь {self.id}'
         else:
             return self.door_name
-
